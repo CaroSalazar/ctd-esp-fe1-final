@@ -34,7 +34,7 @@ Examen Final de Frontend IV
 Es indispensable realizar un Fork de este proyecto, para poder trabajar de forma *individual*. No se aceptarán proyectos que se hayan realizado sin partir de este template.
 
 ### Condiciones mínimas de aprobación
-
+<!-- 
 Las siguientes condiciones son requisitos mínimos necesarios para la aprobación del final:
 
     * **Cumplir con todas las funcionalidades obligatorias**
@@ -42,7 +42,7 @@ Las siguientes condiciones son requisitos mínimos necesarios para la aprobació
     * No se considerará realizada cualquier funcionalidad que sea implementada utilizando una librería distinta a las permitidas.
     * Deberá ser desarrollada utilizando Typescript como lenguaje. Como mínimo, se espera que se utilice el tipado de props en los componentes de React.
     * Toda la información de los elementos, deberá provenir de la API de [Rick and Morty](https://rickandmortyapi.com/). No se admiten datos duros (hardcodeados) en el frontend. Para ello, se deberá implementar la lógica para manejar el pedido a dicha API.
-    * Deberá ser desarrollada utilizando **Redux** junto con **Thunk** o **Saga**. Se otorga la posibilidad de elegir entre una de las dos. Como mínimo se espera el uso correcto de un reducer, más el uso de una ThunkAction (Thunk) o función generadora (Saga)
+    * Deberá ser desarrollada utilizando **Redux** junto con **Thunk** o **Saga**. Se otorga la posibilidad de elegir entre una de las dos. Como mínimo se espera el uso correcto de un reducer, más el uso de una ThunkAction (Thunk) o función generadora (Saga) -->
     * Se deberá documentar correctamente al menos 7 funciones (Puede o no ser componentes de React)
 
 ### Aspectos que modifican la valoración final de la nota
@@ -77,10 +77,10 @@ Las siguientes funcionalidades son requisitos mínimos necesarios para la aproba
 * La aplicación deberá contar con dos páginas:
 
   1 - La página de inicio que debe contar con:
-
+<!-- 
           * Panel de filtros:
             * Contendrá un input en donde el usuario pueda ingresar cualquier texto que desee para hacer un filtro sobre los personajes.
-            * Si el usuario borra el texto ingresado, se deberá mostrar el estado inicial, es decir la búsqueda sin filtro.
+            * Si el usuario borra el texto ingresado, se deberá mostrar el estado inicial, es decir la búsqueda sin filtro. -->
             * Se deberá incluir un boton de "Limpiar filtros", el cual deberá borrar el texto dentro del input y mostrar el estado inicial, es decir la búsqueda sin filtro.
 
           * Listado de personajes
@@ -89,19 +89,19 @@ Las siguientes funcionalidades son requisitos mínimos necesarios para la aproba
             * Se deberá poder marcar y desmarcar a cada personaje como favorito desde su tarjeta individual, teniendo que persistir ese estado en la aplicación.
             * Se deberá poder diferenciar si un personaje se encuentra marcado como favorito o no.
 
-  2 - La página de favoritos que deberá cumplir con los siguientes requisitos:
-
+  <!-- 2 - La página de favoritos que deberá cumplir con los siguientes requisitos: -->
+<!-- 
             *  Todos los personaje marcados como favoritos, deberán aparecer dentro del listado de favoritos en la segunda página de la aplicación.
             *  Si el usuario desmarca un personaje como favorito el mismo deberá desaparecer del listado de favoritos.
-            *  Un personaje que haya sido desmarcado de los favoritos, podrá ser marcado nuevamente desde la pantalla de inicio y deberá aparecer en el listado otra vez.
+            *  Un personaje que haya sido desmarcado de los favoritos, podrá ser marcado nuevamente desde la pantalla de inicio y deberá aparecer en el listado otra vez. -->
     
 
 ### Funcionalidades extras
 
 Los siguientes aspectos son extras al requisito mínimo de aprobación que serán tenidos en cuenta para aumentar la nota final, siempre y cuando su funcionamiento sea correcto:
-
+<!-- 
     * La página de favoritos:
-      * Podrá contar con un botón de "Eliminar todos", que deberá desmarcar todos los personajes del listado de favoritos y los mismos no deberán aparecer marcados como favoritos en la página principal.
+      * Podrá contar con un botón de "Eliminar todos", que deberá desmarcar todos los personajes del listado de favoritos y los mismos no deberán aparecer marcados como favoritos en la página principal. -->
 
     * Realización de una tercer página de vista de cada personaje:
     Al hacer click sobre un personaje deberá redirigirnos a está página.

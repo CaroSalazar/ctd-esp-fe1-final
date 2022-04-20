@@ -1,0 +1,152 @@
+import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
+import {
+  buscarPersonajesPorNombre
+} from "../../servicios/personajes.service";
+import { IRootState } from "../store/store";
+import Personaje from "../types/personajes.types";
+
+export interface BuscarPersonajesAction extends Action {
+  type: "BUSCAR_PERSONAJES";
+  payload: {
+    name: string;
+  };
+}
+
+export const buscarPersonajes: ActionCreator<BuscarPersonajesAction> = (
+  name: string
+) => {
+  return {
+    type: "BUSCAR_PERSONAJES",
+    payload: {
+      name: name
+    },
+  };
+};
+
+export interface BuscarPersonajesSuccessAction extends Action {
+  type: "BUSCAR_PERSONAJES_SUCCESS";
+  payload: {
+    personajes: Personaje[];
+  };
+}
+
+const BuscarPersonajesSuccess: ActionCreator<BuscarPersonajesSuccessAction> = (
+  personajes: Personaje[]
+) => {
+  return {
+    type: "BUSCAR_PERSONAJES_SUCCESS",
+    payload: {
+      personajes: personajes,
+    },
+  };
+};
+
+export interface BuscarPersonajesErrorAction extends Action {
+  type: "BUSCAR_PERSONAJES_ERROR";
+  payload: {
+    error: string;
+  };
+}
+
+const buscarPersonajesError: ActionCreator<BuscarPersonajesErrorAction> = (
+  error: string
+) => {
+  return {
+    type: "BUSCAR_PERSONAJES_ERROR",
+    payload: {
+      error: error,
+    },
+  };
+};
+
+export interface LimpiarFiltroAction extends Action {
+  type: "LIMPIAR_FILTRO";
+  payload: {
+    name: string;
+  };
+}
+export const limpiarFiltro: ActionCreator<LimpiarFiltroAction> = (
+  name: string
+) => {
+  return {
+    type: "LIMPIAR_FILTRO",
+    payload: {
+      name
+    },
+  };
+};
+
+export interface AgregarFavoritoAction extends Action {
+  type: "AGREGAR_FAVORITO";
+  payload: { personaje: Personaje };
+}
+export const agregarFavorito: ActionCreator<AgregarFavoritoAction> = (
+  personaje: Personaje
+): AgregarFavoritoAction => {
+  return {
+    type: "AGREGAR_FAVORITO",
+    payload: {
+      personaje,
+    },
+  };
+};
+
+export interface EliminarFavoritoAction extends Action {
+  type: "ELIMINAR_FAVORITO";
+  payload: { personaje: Personaje };
+}
+
+export const eliminarFavorito: ActionCreator<EliminarFavoritoAction> = (
+  personaje: Personaje
+): EliminarFavoritoAction => {
+  return {
+    type: "ELIMINAR_FAVORITO",
+    payload: {
+      personaje,
+    },
+  };
+};
+
+export interface EliminarTodosFavoritosAction extends Action {
+  type: "ELIMINAR_TODOS_FAVORITOS";
+  payload: { personaje: Personaje };
+}
+
+export const eliminarTodosFavoritos: ActionCreator<
+  EliminarTodosFavoritosAction
+> = (personaje: Personaje): EliminarTodosFavoritosAction => {
+  return {
+    type: "ELIMINAR_TODOS_FAVORITOS",
+    payload: {
+      personaje,
+    },
+  };
+};
+
+export type PersonajeAction =
+  ReturnType<typeof buscarPersonajes>
+  | BuscarPersonajesSuccessAction
+  | BuscarPersonajesErrorAction
+  | LimpiarFiltroAction
+  | AgregarFavoritoAction
+  | EliminarFavoritoAction
+  | EliminarTodosFavoritosAction;
+
+interface BuscarPersonajesThunkAction
+  extends ThunkAction<void, IRootState, unknown, PersonajeAction> {}
+
+export const buscarPersonajesThunk = (
+  name: string
+): BuscarPersonajesThunkAction => {
+  return async (dispatch, getState) => {
+    if (name.length > 2 || name.length === 0) {
+      dispatch(buscarPersonajes(name));
+      try {
+        const respuesta = await buscarPersonajesPorNombre(name);
+        dispatch(BuscarPersonajesSuccess(respuesta.personajes));
+      } catch (error) {
+        dispatch(buscarPersonajesError(error));
+      }
+    }
+  };
+};
