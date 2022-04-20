@@ -1,7 +1,5 @@
 import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
-import {
-  buscarPersonajesPorNombre
-} from "../../servicios/personajes.service";
+import { buscarPersonajesPorNombre } from "../../servicios/personajes.service";
 import { IRootState } from "../store/store";
 import Personaje from "../types/personajes.types";
 
@@ -18,7 +16,7 @@ export const buscarPersonajes: ActionCreator<BuscarPersonajesAction> = (
   return {
     type: "BUSCAR_PERSONAJES",
     payload: {
-      name: name
+      name: name,
     },
   };
 };
@@ -55,23 +53,6 @@ const buscarPersonajesError: ActionCreator<BuscarPersonajesErrorAction> = (
     type: "BUSCAR_PERSONAJES_ERROR",
     payload: {
       error: error,
-    },
-  };
-};
-
-export interface LimpiarFiltroAction extends Action {
-  type: "LIMPIAR_FILTRO";
-  payload: {
-    name: string;
-  };
-}
-export const limpiarFiltro: ActionCreator<LimpiarFiltroAction> = (
-  name: string
-) => {
-  return {
-    type: "LIMPIAR_FILTRO",
-    payload: {
-      name
     },
   };
 };
@@ -124,13 +105,12 @@ export const eliminarTodosFavoritos: ActionCreator<
 };
 
 export type PersonajeAction =
-  ReturnType<typeof buscarPersonajes>
-  | BuscarPersonajesSuccessAction
-  | BuscarPersonajesErrorAction
-  | LimpiarFiltroAction
-  | AgregarFavoritoAction
-  | EliminarFavoritoAction
-  | EliminarTodosFavoritosAction;
+  | ReturnType<typeof buscarPersonajes>
+  | ReturnType<typeof BuscarPersonajesSuccess>
+  | ReturnType<typeof buscarPersonajesError>
+  | ReturnType<typeof agregarFavorito>
+  | ReturnType<typeof eliminarFavorito>
+  | ReturnType<typeof eliminarTodosFavoritos>
 
 interface BuscarPersonajesThunkAction
   extends ThunkAction<void, IRootState, unknown, PersonajeAction> {}
@@ -139,7 +119,6 @@ export const buscarPersonajesThunk = (
   name: string
 ): BuscarPersonajesThunkAction => {
   return async (dispatch, getState) => {
-    if (name.length > 2 || name.length === 0) {
       dispatch(buscarPersonajes(name));
       try {
         const respuesta = await buscarPersonajesPorNombre(name);
@@ -149,4 +128,3 @@ export const buscarPersonajesThunk = (
       }
     }
   };
-};

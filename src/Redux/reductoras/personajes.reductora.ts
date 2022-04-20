@@ -1,4 +1,3 @@
-// import { Reducer } from "@reduxjs/toolkit";
 import Personaje from "../types/personajes.types";
 // import Pagina from "../types/pagina.type";
 import { PersonajeAction } from "../acciones/personajes.acciones";
@@ -47,11 +46,6 @@ const personajesReductora = (
         personajes: [],
         status: "ERROR",
         error: action.payload.error,
-      };
-    case "LIMPIAR_FILTRO":
-      return {
-        ...estado,
-        busqueda: "",
       };
       case "AGREGAR_FAVORITO":
         return {
