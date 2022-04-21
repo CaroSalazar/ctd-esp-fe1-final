@@ -6,9 +6,9 @@ import PaginaDetalle from "./paginas/Detalle.pagina";
 import Encabezado from "./componentes/layout/encabezado.componente";
 import {Provider} from "react-redux"; 
 import {store} from "./Redux/store/store";
-// import Personaje from './Redux/types/personajes.types';
 
-function App(personajes: any) {
+
+function App() {
   
   return (
     <Provider store={store}>
@@ -16,7 +16,7 @@ function App(personajes: any) {
       <Encabezado />
       <Routes>
         <Route path="/" element={<PaginaInicio />} />
-        <Route path="favoritos" element={<PaginaFavoritos personaje={personajes} favorito={true}/>} />
+        <Route path="favoritos" element={<PaginaFavoritos/>} />
         <Route path="detalle" element={<PaginaDetalle />} />
       </Routes>
     </div>

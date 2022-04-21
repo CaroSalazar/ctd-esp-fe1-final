@@ -1,5 +1,5 @@
 import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
-import { buscarPersonajesPorNombre } from "../../servicios/personajes.service";
+import { buscarPersonajesAPI } from "../../servicios/personajes.service";
 import { IRootState } from "../store/store";
 import Personaje from "../types/personajes.types";
 
@@ -116,13 +116,14 @@ interface BuscarPersonajesThunkAction
   extends ThunkAction<void, IRootState, unknown, PersonajeAction> {}
 
 export const buscarPersonajesThunk = (
-  name: string
+  name: string,
+  page?: number
 ): BuscarPersonajesThunkAction => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
       dispatch(buscarPersonajes(name));
       try {
-        const respuesta = await buscarPersonajesPorNombre(name);
-        dispatch(BuscarPersonajesSuccess(respuesta.personajes));
+        const respuesta = await buscarPersonajesAPI(name, page);
+        dispatch(BuscarPersonajesSuccess(respuesta));
       } catch (error) {
         dispatch(buscarPersonajesError(error));
       }

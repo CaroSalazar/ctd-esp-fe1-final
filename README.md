@@ -75,19 +75,19 @@ Los siguientes aspectos son extras al requisito mínimo de aprobación que será
 Las siguientes funcionalidades son requisitos mínimos necesarios para la aprobación del final y es fundamental que funcionen correctamente.
  
 * La aplicación deberá contar con dos páginas:
-
-  1 - La página de inicio que debe contar con:
 <!-- 
+  1 - La página de inicio que debe contar con:
+
           * Panel de filtros:
             * Contendrá un input en donde el usuario pueda ingresar cualquier texto que desee para hacer un filtro sobre los personajes.
-            * Si el usuario borra el texto ingresado, se deberá mostrar el estado inicial, es decir la búsqueda sin filtro. -->
-            * Se deberá incluir un boton de "Limpiar filtros", el cual deberá borrar el texto dentro del input y mostrar el estado inicial, es decir la búsqueda sin filtro.
-
+            * Si el usuario borra el texto ingresado, se deberá mostrar el estado inicial, es decir la búsqueda sin filtro.
+            * Se deberá incluir un boton de "Limpiar filtros", el cual deberá borrar el texto dentro del input y mostrar el estado inicial, es decir la búsqueda sin filtro. -->
+<!-- 
           * Listado de personajes
             * Deberá mostrar los personajes, que estarán representados por tarjetas con información sobre cada uno de ellos.
             * Como máximo se deben mostrar en pantalla 20 tarjetas de personajes por página.
             * Se deberá poder marcar y desmarcar a cada personaje como favorito desde su tarjeta individual, teniendo que persistir ese estado en la aplicación.
-            * Se deberá poder diferenciar si un personaje se encuentra marcado como favorito o no.
+            * Se deberá poder diferenciar si un personaje se encuentra marcado como favorito o no. -->
 
   <!-- 2 - La página de favoritos que deberá cumplir con los siguientes requisitos: -->
 <!-- 

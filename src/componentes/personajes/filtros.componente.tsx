@@ -1,15 +1,16 @@
 import "./filtros.css";
-// import { FC} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { buscarPersonajesThunk} from "../../Redux/acciones/personajes.acciones";
-// import { useSelector} from "../../Redux/store/store";
+import { FC } from "react";
+
 
 
 interface FiltrosProps{
-  enviarbusqueda: () => void
+  enviarbusqueda: string, 
+  handleBusqueda:(busqueda: string) =>{}
 }
 
-const Filtros = ({enviarbusqueda}: FiltrosProps) => {
+const Filtros: FC<FiltrosProps> = ({enviarbusqueda}: FiltrosProps) => {
 
   const busqueda = useSelector<any, any>(estado => estado.personajes.busqueda)
 

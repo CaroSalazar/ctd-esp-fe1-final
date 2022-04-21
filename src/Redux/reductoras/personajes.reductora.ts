@@ -1,13 +1,10 @@
 import Personaje from "../types/personajes.types";
-// import Pagina from "../types/pagina.type";
 import { PersonajeAction } from "../acciones/personajes.acciones";
 
 export interface EstadoPersonajes {
   busqueda: string;
   personajes: Personaje[] | [];
   favoritos: Personaje[] | [];
-  // paginas: Pagina[];
-  siguientePagina: string;
   status: "LOADING" | "SUCCESS" | "ERROR";
   error: string | null;
 }
@@ -16,8 +13,6 @@ const estadoInicial: EstadoPersonajes = {
   busqueda: "",
   personajes: [],
   favoritos: [],
-  // paginas: [],
-  siguientePagina: "",
   status: "SUCCESS",
   error: null,
 };

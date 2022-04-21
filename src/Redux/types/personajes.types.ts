@@ -6,5 +6,7 @@ export default interface Personaje {
     image:string;
     species:string;
     episode:string[];
+    gender: string;
+    origin: {name: string, url:string};
 }
 

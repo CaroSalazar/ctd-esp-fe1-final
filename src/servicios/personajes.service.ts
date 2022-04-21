@@ -1,29 +1,15 @@
-import Respuesta from "../Redux/types/respuesta.type";
+import Personaje from "../Redux/types/personajes.types";
 
-export const buscarPersonajesPorNombre = async (name?: string): Promise<Respuesta> => {
-    let params = "?"
-    if (name){
-        params += `name=${name}`
-    }
-    return fetch(`https://rickandmortyapi.com/api/character/${params}`)
-    .then(response => response.json())
-    .then(data => {
-        return {
-            personajes: data.results,
-            siguientePagina: data.info.next || ""
-        }
-    });
+
+export const buscarPersonajesAPI = async (
+    name?: string,
+    page?: number
+): Promise<Personaje[]> => {
+  let params = `?page=${page ? page : 1}`;
+  if (name) {
+    params += `&name=${name}`;
+  }
+  return fetch(`https://rickandmortyapi.com/api/character/${params}`)
+    .then((data) => data.json())
+    .then((data) => data.results);
 };
-
-export const buscarPersonajesPorPagina = async (pagina: string): Promise<Respuesta> => {
-    return fetch(pagina)
-        .then(response => response.json())
-        .then(data => {
-            return {
-                personajes: data.results,
-                siguientePagina: data.info.next || ""
-            }
-        });
-};
-
-

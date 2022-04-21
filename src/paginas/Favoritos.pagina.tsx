@@ -15,12 +15,7 @@ import {IRootState} from "../Redux/store/store"
  * @returns la pagina de favoritos
  */
 
-interface PaginaFavoritosProps{
-  personaje: Personaje;
-  favorito: boolean
-}
-
-const PaginaFavoritos:FC<PaginaFavoritosProps> = ({personaje, favorito}: PaginaFavoritosProps) => {
+const PaginaFavoritos:FC = () => {
 
   const dispatch = useDispatch();
   const  {favoritos}  = useSelector<IRootState, any>(estado => estado.personajes);
