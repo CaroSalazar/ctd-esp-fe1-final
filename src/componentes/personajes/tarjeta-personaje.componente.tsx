@@ -5,14 +5,16 @@ import {FC, useEffect} from "react"
 import {useSelector, useDispatch} from "react-redux"
 import {IRootState} from "../../Redux/store/store"
 import {agregarFavorito, eliminarFavorito}  from "../../Redux/acciones/personajes.acciones"
+
 /**
- * Tarjeta para cada personaje dentro de la grilla de personajes. 
- * 
- * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
- * 
- * 
- * @returns un JSX element 
+ * Componente que renderiza una Tarjeta para cada personaje dentro de la grilla de personajes. 
+ * @author Carolina Salazar
+ * @param {Personaje} personaje
+ * @param {boolean} favorito
+ * @returns {JSX element} 
  */
+
+
 
  interface TarjetaPersonajeProps {
     personaje: Personaje;
@@ -27,6 +29,14 @@ const TarjetaPersonaje: FC<TarjetaPersonajeProps> = ({personaje, favorito}:Tarje
   useEffect(() => {
     favoritos.includes(personaje);
   });
+
+
+    /**
+     * Función que se dispara al clickear el botonFavorito. 
+     * Si el personaje esta marcado como favorito, despacha la acción para eliminarlo del array de favoritos.
+     * Y si el personaje no esta como favorito, despacha la acción para agregarlo. 
+     * @author Carolina Salazar
+     */
 
   const handleClick = (personaje: Personaje) => {
     if (favoritos.includes(personaje)) {

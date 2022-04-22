@@ -13,3 +13,4 @@ export const buscarPersonajesAPI = async (
     .then((data) => data.json())
     .then((data) => data.results);
 };
+

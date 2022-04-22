@@ -1,8 +1,7 @@
 import "./grilla-personajes.css";
 import TarjetaPersonaje from "./tarjeta-personaje.componente";
 import{FC, useEffect} from "react"
-import {useDispatch, useSelector} from 'react-redux';
-import { buscarPersonajesThunk } from "../../Redux/acciones/personajes.acciones";
+import {useSelector} from 'react-redux';
 import Personaje from "../../Redux/types/personajes.types";
 import {IRootState} from "../../Redux/store/store"
 
@@ -11,9 +10,8 @@ import {IRootState} from "../../Redux/store/store"
 /**
  * Grilla de personajes para la pagina de inicio
  *
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- *
- *
+ * Componente que renderiza las tarjetas de los personajes en la pagina de inicio
+ * @author Carolina Salazar
  * @returns un JSX element
  */
 
@@ -21,18 +19,19 @@ import {IRootState} from "../../Redux/store/store"
 
 const GrillaPersonajes: FC = () => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const {personajes, status, favoritos} = useSelector<IRootState, any>(
     (estado: IRootState) => estado.personajes);
 
-  useEffect(() => {
-    dispatch(buscarPersonajesThunk(''));
-}, []);
+//   useEffect(() => {
+//     dispatch(buscarPersonajesThunk(''));
+// }, []);
 
 
 if (status === "LOADING") return <div>Cargando personajes...</div>;
 if (status === "ERROR") return <div>No se pudo cargar los personajes.</div>;
-if (!personajes || personajes.length === 0) return <></>;
+if (!personajes || personajes.length === 0) return <div>No se encontraron personajes con ese nombre...</div>;
+
 
   return(
     <div className="grilla-personajes">

@@ -7,11 +7,11 @@ import { buscarPersonajesThunk
  import {FC, useState, useEffect} from "react"
 import {useSelector} from "../Redux/store/store"
 /**
- * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
+ * Pagina principal donde se visualiza el panel de filtros junto con la grilla de personajes.
  * 
  * Uso: 
  * ``` <PaginaInicio /> ```
- * 
+ * @author Carolina Salazar
  * @returns la pagina de inicio
  */
 
@@ -22,6 +22,14 @@ const PaginaInicio: FC = () => {
     const [pagina, setPagina] = useState(1);
     const dispatch = useDispatch();
     
+    /**
+     * Función que se ejecuta cuando clickeamos el boton limpiar Filtro.
+     * La misma despacha una accion que renderiza los primeros 20 personajes de la api.
+     * Y una segunda acción que cambia el valor de la propiedad 
+     * 'búsqueda' del estado global a un string vacío.  
+     * @author Carolina Salazar
+     */ 
+
     const limpiarFiltro = async () => {
         setPagina(1);
         dispatch(buscarPersonajesThunk("")) 
